@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Challenge Solver</title>
+    <title>Alchemy Unbound Solver</title>
     <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 
 <body>
+    <label><strong>What's the fastest way to craft</strong></label>
     <input list="items" id="item-choice" onchange="calculate()"/>
     <datalist id="items"></datalist>
     <p style="white-space: pre-line" id="recipe-display"></p>

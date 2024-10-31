@@ -1,12 +1,12 @@
 async function init() {
     let recipes = {};
-    let promise1 = fetch("best recipes.txt").then(response => response.text()).then(text => {
+    let promise1 = fetch("data/best recipes.txt").then(response => response.text()).then(text => {
         for (let line of text.split("\n")) {
             let [a, b, result] = line.split(",").map(x => parseInt(x));
             recipes[result] = [a, b];
         }
     });
-    let item_names = await fetch("combined items.txt").then(response => response.text()).then(text => text.split("\n"));
+    let item_names = await fetch("data/combined items.txt").then(response => response.text()).then(text => text.split("\n"));
     let item_ids = {};
     item_names.forEach((v, i) => item_ids[v] = i);
     await promise1;

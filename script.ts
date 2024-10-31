@@ -1,6 +1,9 @@
-async function init(): Promise<[{ [key: number]: [number, number] }, string[], { [key: string]: number }]> {
+type Recipes = { [key: number]: [number, number] }
+type ItemIDs = { [key: string]: number }
+
+async function init(): Promise<[Recipes, string[], ItemIDs]> {
     let recipes: { [key: number]: [number, number] } = {}
-    let promise1 = fetch("best recipes.txt").then(
+    let promise1 = fetch("data/best recipes.txt").then(
         response => response.text()
     ).then(
         text => {
@@ -11,7 +14,7 @@ async function init(): Promise<[{ [key: number]: [number, number] }, string[], {
         }
     )
 
-    let item_names: string[] = await fetch("combined items.txt").then(
+    let item_names: string[] = await fetch("data/combined items.txt").then(
         response => response.text()
     ).then(
         text => text.split("\n")
@@ -55,9 +58,9 @@ function calculate() {
     document.getElementById("recipe-display").textContent = path.reverse().join("\n")
 }
 
-let recipes: { [key: number]: [number, number] }
+let recipes: Recipes
 let item_names: string[]
-let item_ids: { [key: string]: number }
+let item_ids: ItemIDs
 
 init().then(
     args => {
